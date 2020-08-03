@@ -1,7 +1,7 @@
-package baekjoon.Quadrant;
+package baekjoon;
 import java.util.Scanner;
 
-public class Main {
+public class Quadrant {
     public static void main(final String args[]) {
         int a, b;
         char c;
