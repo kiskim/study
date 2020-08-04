@@ -1,4 +1,4 @@
-package baekjoon.training_1_4;
+package baekjoon.level5.Star13;
 
 import java.util.Scanner;
 

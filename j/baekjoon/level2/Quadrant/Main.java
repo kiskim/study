@@ -1,4 +1,4 @@
-package baekjoon.if_1_4;
+package baekjoon.level2.Quadrant;
 
 import java.util.Scanner;
 

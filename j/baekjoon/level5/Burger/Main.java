@@ -1,4 +1,4 @@
-package baekjoon.training_1_2;
+package baekjoon.level5.Burger;
 
 import java.util.Scanner;
 

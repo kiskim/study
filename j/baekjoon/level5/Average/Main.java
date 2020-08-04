@@ -1,4 +1,4 @@
-package baekjoon.training_1_1;
+package baekjoon.level5.Average;
 
 import java.util.Scanner;
 
