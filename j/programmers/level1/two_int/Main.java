@@ -1,4 +1,4 @@
-package programmers.two_int;
+package programmers.level1.two_int;
 
 public class Main {
 	public static long solution(int a, int b){

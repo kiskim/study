@@ -1,4 +1,4 @@
-package programmers.center_string;
+package programmers.level1.center_string;
 
 import java.util.Scanner;
 
