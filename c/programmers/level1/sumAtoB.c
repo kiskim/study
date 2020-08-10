@@ -16,6 +16,21 @@ long long solution(int a, int b){
 	return res;
 }
 
+long long sumAtoB(long a, long b)
+{
+	return (b - a + 1) * (a + b) / 2;
+}
+
+long long solution2(int a, int b){
+	int temp;
+	if(a > b){
+		temp = a;
+		a = b;
+		b = temp;
+	}
+	return sumAtoB(a, b);
+}
+
 int main()
 {
 	printf("%d\n", solution(3, 5));
