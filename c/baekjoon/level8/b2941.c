@@ -17,9 +17,10 @@ int main(){
 		}
 	}
 	n[7] -= n[6];
-	for(int i = 0; i < 7; i++)
+	res = strlen(in);
+	for(int i = 0; i < 8; i++)
 	{
-		res += n[i] * strlen(c[i]);
+		res -= n[i] * (strlen(c[i]) - 1);
 	}
 	printf("%d", res);
 	return 0;
