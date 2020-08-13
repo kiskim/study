@@ -13,7 +13,6 @@ char *solution(char *s)
 		{
 			if(answer[i] < answer[j] && answer[i] != '\0')
 			{
-				//printf("%c %c\n", answer[i], answer[j]);
 				temp = answer[i];
 				answer[i] = answer[j];
 				answer[j] = temp;
