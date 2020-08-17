@@ -1,4 +1,4 @@
-package programmers.level1.sumAtoB;
+package programmers.level1.p02_sumAtoB;
 
 public class Main {
 	public static long solution(int a, int b){

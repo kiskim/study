@@ -1,4 +1,4 @@
-package programmers.level1.desc_string;
+package programmers.level1.p03_desc_string;
 
 import java.util.Scanner;
 

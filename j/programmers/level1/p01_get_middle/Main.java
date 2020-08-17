@@ -1,4 +1,4 @@
-package programmers.level1.get_middle;
+package programmers.level1.p01_get_middle;
 
 import java.util.Scanner;
 

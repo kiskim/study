@@ -1,4 +1,4 @@
-package programmers.level1.cont_string;
+package programmers.level1.p04_cont_string;
 
 public class Main {
 	public static boolean solution(String s){

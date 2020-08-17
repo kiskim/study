@@ -1,4 +1,4 @@
-package programmers.level1.watermelon;
+package programmers.level1.p05_watermelon;
 
 import java.util.Scanner;
 
