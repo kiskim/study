@@ -4,7 +4,7 @@
 #include <string.h>
 #include <ctype.h>
 char* solution(const char* s) {
-    char* answer = (char*)malloc(sizeof(strlen(s)+1));
+    char* answer = (char*)malloc(sizeof(char) * (strlen(s)+1));
 	strcpy(answer, s);
 	int flag = 0;
 	for(int i = 0; i < strlen(s); i++)
