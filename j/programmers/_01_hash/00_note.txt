@@ -1,0 +1,29 @@
+1. 완주하지 못한 선수
+	solution 1
+	- 배열을 정렬한 뒤 같은 순서 동일한 문자열이 존재 하지 않는 경우 해당 문자열을 반환
+	- solution 2에 비해 상당히 느림(약 3 ~ 4배 차이)
+
+	solution 2
+	+ 문제의 출제 의도에 더 적합한 풀이
+	+ HashMap을 이용한 방식
+	+ participant 값을 map에 키로 추가하고 getOrDefault(key, default value)를 사용해
+	  존재하면 value를 아니면 default value(현재의 경우 0)를 받아 참가자 이름을 카운팅
+	+ completion 를 key 값으로 map의 value를 조회 값을 감소시켜 완주자 카운팅
+	+ 최종적으로 value가 0이 아닌 경우 완주하지 못한 사람이 된다.
+
+2. 전화번호
+	solution
+	- phone_book을 비교
+	- indexOf로 시작부분(0)인경우 false를 반환
+	- indexOf가 0인 경우 더 이상 반복문을 돌지 않고 종료
+	
+	+ String의 startWith("")함수를 이용한 방식도 가능
+
+3. 위장
+	solution
+	- "이름", "종류" 쌍의 리스트로 입력을 받음
+	- "종류"를 key로 사용해서 같은 종류의 옷을 카운팅
+
+	+ 4 종류의 옷의 갯수가 {n, m, o, p}인 경우 조합의 수
+	  -> (n + 1) * (m + 1) * (o + 1) * (p + 1) - 1 
+	  -> 각 종류 별 옷을 선택하는 경우 + 선택 안하는 경우의 곱 - (아무것도 선택하지 않는 경우 1)
