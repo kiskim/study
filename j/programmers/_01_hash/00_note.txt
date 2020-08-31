@@ -27,3 +27,19 @@
 	+ 4 종류의 옷의 갯수가 {n, m, o, p}인 경우 조합의 수
 	  -> (n + 1) * (m + 1) * (o + 1) * (p + 1) - 1 
 	  -> 각 종류 별 옷을 선택하는 경우 + 선택 안하는 경우의 곱 - (아무것도 선택하지 않는 경우 1)
+
+4. 베스트 엘범
+	solution
+	+ Music class: class를 이용해 id, play, genres를 하나로 묶어서 관리
+	+ Music class에 Comparable의 compareTo를 구현해 Music class를 비교할 때 play 수 가 
+	  많은 경우 앞으로 가도록 구현
+	+ 변수
+	  - bestAlbum: 장르 별 최다 play 두곡 씩 들어갈 ArrayList
+	  - songList: Music class가 들어갈 ArrayList
+	  - genreMap: genre 별 총 play 수 저장
+	  - albumMap: genre 별 bestAlbum에 들어간 곡 수 카운트
+	+ songList를 sort() 함수로 정렬하되 genre가 같으면 Music class에 선언해 둔 compareTo를 이용해 
+	  play 수가 많으면 앞으로(작게), genre가 다르면 genreMap에 저장되어 있는 장르별 총 play 수를 
+	  비교하도록 Comparator를 선언
+	  - genre가 다르면 genreMap의 총 play 수
+	  - genre가 같으면 play 수

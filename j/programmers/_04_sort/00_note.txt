@@ -1,0 +1,6 @@
+1. k 번째 수 k_num.java
+	- 범위의 값을 ArrayList로 저장, sort 한 후 필요로 하는번째의 수 저장
+
+	+ Arrays.copyOfRange(target, start, end)를 이용해 간략화
+
+2.  가장 큰 수

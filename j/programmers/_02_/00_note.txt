@@ -1,0 +1,31 @@
+1. 주식
+	- 다음 가격이 떨어져도 현재의 값 1초를 유지한 것으로 함
+	  -> 다음으로 넘어가는 것 : 1초
+	- 현재 가격과 이후 가격 비교하는 경우를 1초 카운트
+	- 가격이 낮아지면 break 후 카운트 한 값 저장
+
+2. 기능 개발
+	- 매 반복마다 현재 index를 complete에 복사하고 speed만큼 progress를 증가
+	- progress가 100 이상이고 index와 현재 보고있는 값의 번호가 일치하는 경우 index 증가
+	- progress 전체 증가 후 앞서 복사해 둔 complete와 index의 차를 구해 완료된 갯수를 구한다.
+
+3. 트럭
+	- 다리 통과 상태, 진입 시간을 저장한 Queue bridge, t 생성
+	- while문 조건으로 index 가 truck_weight 길이 이하이거나 bridge.peek()이 null 이 
+	  아닐 때로 지정
+	  -> 첫 시작일 때는 bridge.peek()이 null 이고 index 가 truck_weight 길이를 
+	     넘어서도 bridge 에 데이터 남은 경우 계속해서 진행 해야함
+	- 첫 if 문에서 t가 비어있지 않고 현재 시간 time - t.peek() 이 bridge_length 와 
+	  같은 경우 트럭 통과 처리 진행
+	  -> tot_weight 에서 통과한 트럭 무게 제거, t에서 시간 제거
+	- index 가 truck_weight 길이 이하일 때 현재 무게 tot_weight 가 허용 무게 weight 
+	  이하일 때 트럭 진입 진행
+	  -> bridge 에 무게 add , 현재 시간 time 을 t.add(), tot_weight 무게 처리
+
+4. 프린터
+	- 프린터의 priority와 location 값을 저장한 객체 Print 선언
+	- for 문 두개를 이용해 값을 비교, 더 큰 값을 발견 했을 시 list에 다시 추가해 주고
+	  해당 index의 값은 제거 한 뒤 i값을 반복문에서 증가시킬 값을 고려해 -1로 세팅
+	  다시 index 0부터 다시 값을 확인
+
+	+
