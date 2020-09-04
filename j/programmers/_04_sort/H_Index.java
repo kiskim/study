@@ -8,7 +8,7 @@ public class H_Index {
 		int answer = 0;
 		int temp;
 		Arrays.sort(citations);
-		for(int i = 0; i < citations.length; i++)
+		for(int i = 0; i < citations[citations.length - 1]; i++)
 		{
 			temp = 0;
 			for(int j = 0; j < citations.length; j++)
