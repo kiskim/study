@@ -8,23 +8,20 @@ public class H_Index {
 		int answer = 0;
 		int temp;
 		Arrays.sort(citations);
-		for(int i = 0; i < citations[citations.length - 1]; i++)
+		for(int i = 0; i < citations.length; i++)
 		{
-			temp = 0;
-			for(int j = 0; j < citations.length; j++)
-			{
-				if(i <= citations[j])
-					temp++;
-			}
-			if(citations.length - temp <= i && i <= temp)
+			temp = citations.length - i;
+			if(citations[i] >= temp){
 				answer = temp;
+				break;
+			}
 		}
         return answer;
 	}
 	
 	public static void main(String[] args) {
 		H_Index h = new H_Index();
-		int [] c = {20,21,22,23};
+		int [] c = {1, 2, 2, 2, 2};
 		int a = h.solution(c);
 		System.out.println(a+"");
 	}

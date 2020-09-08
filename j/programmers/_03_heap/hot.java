@@ -1,39 +1,29 @@
 package programmers._03_heap;
 
-import java.util.TreeSet;
+import java.util.PriorityQueue;
 
 public class hot {
     public int solution(int[] scoville, int K) {
-		int answer = 0;
-		int count = 0;
-		int temp = 0;
-		int min1, min2;
-		TreeSet<Integer> tree = new TreeSet<Integer>();
-		for(int a : scoville)
-			tree.add(a);
-		if(tree.last() == 0)
+		if(scoville.length <= 1)
 			return -1;
-		while(tree.first() < K)
+		int answer = 0;
+		int min1 = 0, min2 = 0, temp = 0;
+		PriorityQueue<Integer> q = new PriorityQueue<>();
+		for(int a : scoville)
+			q.add(a);
+		while(q.size() > 1 && q.peek() < K)
 		{
 			answer++;
-			count = 0;
-			min1 = tree.pollFirst();
-			while(tree.first() == min1)
-			{
-				tree.pollFirst();
-				count++;
-			}
-			min2 = tree.pollFirst();
-			while(tree.first() == min2)
-			{
-				tree.pollFirst();
-				count++;
-			}
+			min1 = q.poll();
+			while(!q.isEmpty() && q.peek() == 0)
+				q.poll();
+			min2 = q.isEmpty() ? min1 : q.poll();
+			if(min1 == 0 && min2 == 0)
+				return -1;
 			temp = min1 + min2 + min2;
-			while(count-- >0)
-				tree.add(temp);
+			q.add(temp);
 		}
-        return answer;
+		return q.peek() > K ? answer : -1;
 	}
 	
 	public static void main(String[] args) {
