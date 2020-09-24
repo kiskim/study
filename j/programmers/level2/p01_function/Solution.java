@@ -1,8 +1,8 @@
-package exam._02_;
+package programmers.level2.p01_function;
 
 import java.util.ArrayList;
 
-public class 기능개발 {
+public class Solution {
 
     public int[] solution(int[] progresses, int[] speeds) {
 		int[] answer;
@@ -32,7 +32,7 @@ public class 기능개발 {
 		int [] s = {1, 30, 5};
 		int [] p2 = {95, 90, 99, 99, 80, 99};
 		int [] s2 = {1, 1, 1, 1, 1, 1};
-		기능개발 q = new 기능개발();
+		Solution q = new Solution();
 		for(int a: q.solution(p, s))
 			System.out.print(a+" ");
 		System.out.println();

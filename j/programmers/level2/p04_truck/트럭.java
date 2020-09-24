@@ -1,4 +1,4 @@
-package exam._02_;
+package programmers.level2.p04_truck;
 
 import java.util.LinkedList;
 import java.util.Queue;

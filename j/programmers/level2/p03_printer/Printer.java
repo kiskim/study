@@ -1,4 +1,4 @@
-package exam._02_;
+package programmers.level2.p03_printer;
 
 import java.util.ArrayList;
 
