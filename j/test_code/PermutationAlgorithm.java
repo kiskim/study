@@ -9,10 +9,10 @@ public class PermutationAlgorithm {
 	 */
 	public static void swapTest(int [] arr, int depth, int n, int r){
 		if(depth == r){
-			for(int a: arr)
-				System.out.print(a+"");
+			for(int i = 0; i < r;i++)
+				System.out.print(arr[i]);
 			System.out.println();
-			return;
+			return ;
 		}
 		for(int i = depth; i < n; i++)
 		{
@@ -51,9 +51,9 @@ public class PermutationAlgorithm {
 		}
 	}
 	public static void main(String[] args) {
-		int [] input = {1, 2, 3};
-		swapTest(input, 0, 3, 3);
+		int [] input = {1, 2, 3, 4};
+		swapTest(input, 0, 4, 2);
 		System.out.println("------------------------");
-		visitedTest(input, new int[3], new boolean[3], 0, 3, 2);
+		visitedTest(input, new int[4], new boolean[4], 0, 4, 2);
 	}
 }
