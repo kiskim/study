@@ -29,6 +29,7 @@ memset
 	+ 자료형: https://kldp.org/node/75686
 
 <br>
+
 strchr
 ---
 + 문자열 내에 일치하는 문자가 있는지 검사하는 함수
@@ -43,6 +44,7 @@ strchr
 + 참고 자료
 	+ strchr: https://blockdmask.tistory.com/389
 <br>
+
 bzero
 ---
 + 바이트 스트링 ptr의 시작부터 size 바이트만큼 0으로 채운다
