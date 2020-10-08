@@ -1,6 +1,8 @@
 package programmers.level2.p02_skillTree;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 
 public class Solution {
     public int solution(String skill, String[] skill_trees) {
@@ -32,9 +34,23 @@ public class Solution {
         return answer;
 	}
 	
+
+    public int solution2(String skill, String[] skill_trees) {
+		int answer = 0;
+		ArrayList<String> list = new ArrayList<>(Arrays.asList(skill_trees));
+		Iterator<String> itr = list.iterator();
+		while(itr.hasNext())
+		{
+			if(skill.indexOf(itr.next().replaceAll("[^"+skill+"]", "")) != 0)
+				itr.remove();;
+		}
+		answer = list.size();
+		return answer;
+	}
 	public static void main(String[] args) {
 		String s = "CBD";
 		String[] tree = { "CQD","BACDE", "CBADF", "AECB", "BDA", "CQQQ"};
-		new Solution().solution(s, tree);
+		int a = new Solution().solution(s, tree);
+		System.out.println(a+"");
 	}
 }
