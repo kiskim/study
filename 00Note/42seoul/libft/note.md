@@ -1,4 +1,4 @@
-1. memset
++ memset
 	+ 메모리의 시작점부터 연속된 범위를 어떤 값(바이트 단위)으로 저장
 	+ 프로토타입 :
 		~~~
@@ -42,7 +42,7 @@
 		+ void pointer: http://soen.kr/lecture/ccpp/cpp1/10-2-2.htm
 		+ 자료형: https://kldp.org/node/75686
 
-2. strchr
++ strchr
 	+ 문자열 내에 일치하는 문자가 있는지 검사하는 함수
 	+ 프로토타입:
 		```
@@ -50,7 +50,9 @@
 		```
 		+ str: 검색할 문자열
 		+ c: 존재하는지 확인할 문자(아스키값으로 들어감)
-		+ return: 함수가 존재하는 포인터
+		+ return
+			+ 함수가 존재하는 포인터
+			+ 존재하지 않으면 null
 	+ 전체 코드
 		~~~
 		char	*ft_strchr(const char *str, int c)
@@ -66,7 +68,7 @@
 	+ 참고 자료
 		+ strchr: https://blockdmask.tistory.com/389
 
-3. bzero
++ bzero
 	+ 바이트 스트링 ptr의 시작부터 size 바이트만큼 0으로 채운다
 	+ 초기화 목적으로 사용되며 현재는 잘 사용되지 않고 memset으로 대체한다
 	+ 프로토타입:
@@ -78,8 +80,7 @@
 	+ 참고 자료
 		+ https://www.joinc.co.kr/w/man/3/bzero
 
-	memcpy
-	---
++ memcpy
 	+ 메모리의 일부분을 복사하는 함수
 	+ 프로토타입:
 		~~~
@@ -105,4 +106,44 @@
 			}
 			return (destination);
 		}
+		
++ memccpy
+	+ 프로토타입
 		~~~
+		void *memccpy(void *dest, const void *src, int c, size_t n);
+		~~~
+		+ dest: 복제가 되는 되는 변수
+		+ src: 복제할 원본 데이터
+		+ c: src에서 만나면 복제를 중단할 값
+		+ n: 복제할 데이터의 byte 수
+		+ return
+			+ dest+: 추가 복제 편의를 위해 끝난 데이터의 다음 메모리 번지
+			+ null: src에서 c문자를 만나지 못함
+	+ src의 데이터를 n 바이트 dest에 복제할 때 src에서 문자 c를 만나면 c까지 복제하고 중단
+	+ 복제가 완료된 dest의 다음 번지를 리턴
+	+ c를 만나지 않는다면 n 바이트를 복제하고 null을 리턴
+	+ 참고 자료
+		: https://www.it-note.kr/66
+
++ memmove
+	+  프로토타입
+		~~~
+		void *memmove(void *dest, const void* src, size_t num);
+		~~~
+
+		+ dest: 데이타가 복사 될 곳
+		+ src: 복사 할 데이터
+		+ num: 복사 할 바이트 수
+		+ return: dest
+	+ 메모리 블록을 옮기는 함수
+	+ src부터 num 바이트 만큼 dest로 옮긴다
+	+ 메모리 복사 수행시 중간에 버퍼를 사용해 dest, src의 해당 범위가 겹쳐도 상관 없다
+	+ src의 null문자를 확인하지 않고 무조건 num 바이트 만큼 복사 수행
+	+ 오버 플로우 방지를 위해 dest, src가 가리키는 배열 모두 적어도 num 바이트 이상 되어야한다
+	+ memcpy와 차이점
+		+ memmove는 데이터를 복사 할 때 버퍼를 사용해 임시 공간을 할당, 복사하기 때문에 겹치는 dest와 src가 겹치는 경우 오버랩 현상을 방지할 수 있다.
+		+ 속도면에서는 memcpy가 낫지만, 안정성에서는 memmove가 더 좋다.
+	+ 참고 자료
+		+ https://modoocode.com/78
+		+ https://blog.naver.com/sharonichoya/220510332768
+	
