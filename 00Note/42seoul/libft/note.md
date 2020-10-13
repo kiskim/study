@@ -110,7 +110,7 @@
 + memccpy
 	+ 프로토타입
 		~~~
-		void *memccpy(void *dest, const void *src, int c, size_t n);
+			void *memccpy(void *dest, const void *src, int c, size_t n);
 		~~~
 		+ dest: 복제가 되는 되는 변수
 		+ src: 복제할 원본 데이터
@@ -128,7 +128,7 @@
 + memmove
 	+  프로토타입
 		~~~
-		void *memmove(void *dest, const void* src, size_t num);
+			void *memmove(void *dest, const void* src, size_t num);
 		~~~
 
 		+ dest: 데이타가 복사 될 곳
@@ -146,4 +146,108 @@
 	+ 참고 자료
 		+ https://modoocode.com/78
 		+ https://blog.naver.com/sharonichoya/220510332768
-	
+
++ memchr
+	+ 프로토타입
+		~~~
+			void *memchr(const void* ptr, int value, size_t num);
+		~~~
+
+		+ ptr: 탐색할 메모리의 시작 포인터
+		+ num: ptr에서부터 num 바이트를 탐색
+		+ value: 일치하는지 확인 할 값
+		+ return: 일치하는 곳이 있으면 일치하는 곳의 주소값, 없으면 null을 리턴
+	+ ptr이 가리키는 메모리 처음 num 바이트 중 처음으로 value와 일치하는 값의 주소값을 리턴
+	+ 참고 자료: https://modoocode.com/92
+
++ memcmp
+	+ 프로토타입
+		~~~
+			int memcmp(const void *ptr1, const void *ptr2, size_t num);
+		~~~
+
+		+ ptr1, ptr2: 비교할 메모리의 주소 값
+		+ num: 비교할 바이트 수
+		+ return
+			+ ptr1 == ptr2: 0
+			+ ptr1 > ptr2: 양수
+			+ ptr1 < ptr2: dmatm
+	+ 두 메모리 블록의 값을 앞에서부터 비교하는 함수
+	+ 참고 자료: https://modoocode.com/84
+
++ strlen
+	+ 프로토타입
+		~~~
+			size_t strlen(const char *str);
+		~~~
+
+		+ str: 길이를 확인할 문자열
+		+ return: 문자열의 길이를 리턴
+	+ 문자열의 길이를 확인하는 함수
+	+ C언어의 문자열은 끝 문자가 "\0"이 포함되어 문자열의 끝을 확인 할 수 있따
+	+ 문자열의 길이는 끝 문자(=널 문자 = \0)을 제외한 시작부터 끝 까지의 길이를 말한다.
+
++ strlcpy
+	+ 프로토타입
+		~~~
+			size_t strlcpy(char *destination, const char *source, size_t size);
+		~~~
+
+		+ destination: 데이터를 저장할 메모리의 시작 주소
+		+ source: 복사 할 메모리의 시작 주소
+		+ size: 널 문자를 포함한 복사 할 길이
+		+ return: destination의 길이
+	+ 문자열을 복사하는 strcpy의 보안 목적으로 대체하기 위한 함수
+	+ 문자열을 복사할 때 마지막에 널 문자 삽입이 보장되는 함수
+	+ source의 값을 destination에 복사하는데 size 길이만큼을 복사하는데 마지막에 널 문자(\0)를 포함한 길이를 복사한다
+	+ 때문에 "1234"를 size=3이면 복사한다면 "12"만 복사되고, size = 1인 경우 널문자만 입력된다.
+	+ 참고 자료: https://whatdocumentary.tistory.com/44
+
++ strlcat
+	+ 프로토타입
+		~~~
+			size_t strlcat(char *destination, const char *source, size_t num);
+		~~~
+		+ destination: 메모리가 복사 될 곳의 주소
+		+ source: 복사 할 메모리의 주소
+		+ num: destination의 길이 + source의 길이 + 1(\0 길이)
+		+ return: 널 문자를 제외한 결합된 문자열의 총 길이를 반환
+	+ strncat의 안정성을 보완한 함수
+	+ destination뒤에 source를 추가해주는 함수
+	+ ex) destination = 5, src = 4
+		+ size < destination + 1: 복사 X
+		+ size = 8: destination + source 2 + \0 
+	+ size - strlen(destination) - 1 만큼 source에서 복사된다.
+	+ 참고 자료
+		+ https://whatdocumentary.tistory.com/45
+		+ https://hanul-dev.netlify.app/c/strlcat()-%EA%B5%AC%ED%98%84/
+
++ strrchr
+	+ 프로토타입
+		~~~
+			char *strrchr(const char *s, int c);
+		~~~
+
+		+ s: 탐색 대상이 될 문자열
+		+ c: 탐색 할 문자
+		+ return: 찾은 문자의 위치 or NULL
+	+ 문자열에서 문자를 검색하되 가장 마지막의 위치를 찾는다
+	+ 참고 자료: https://modoocode.com/96
+
++ strnstr
+	+ 프로토타입
+		~~~
+			char *strnstr(const char *big, const char *little, size_t len);
+		~~~
+
+		+ big: 탐색 대상이 될 문자열의 포인터
+		+ little: 탐색할 문자열
+		+ len: bit 시작 포인터에서 탐색할 길이
+		+ return
+			+ little이 비어있는 경우 big을 반환
+			+ little이 big에 없는 경우 null 반환
+			+ little이 존재하는 경우 big에서 little이 시작하는 포인터 반환
+	+ big 포인터에서 len까지의 범위에서 little과 일치하는 데이터의 포인터를 찾는 함수
+	+ 참고 자료
+		+ https://whatdocumentary.tistory.com/49
+		+ https://nxmnpg.lemoda.net/3/strnstr
