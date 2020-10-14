@@ -251,3 +251,41 @@
 	+ 참고 자료
 		+ https://whatdocumentary.tistory.com/49
 		+ https://nxmnpg.lemoda.net/3/strnstr
+
++ strncmp
+	+ 프로토타입
+		~~~
+			int strncmp(const char *s1, const char *s2, size_t n);
+		~~~
+
+		+ s1, s2: 비교할 문자열
+		+ n: 비교할 문자열 길이
+		+ return: 같으면 0, s1의 크면 1, s2가 -1
+	+ 문자열 s1, s2를 비교하는 함수
+
++ atoi
+	+ 프로토타입
+		~~~
+		int atoi(const char *nptr);
+		~~~
+	+ 입력된 문자열을 숫자로 바꾸어주는 함수
+	+ 입력된 문자열에서 숫자가 아닌 문자가 올 때 까지 정수로 변환해서 반환
+	+ 첫 "-" 기호를 통해 부호를 결정하고 이후에는 문자로 취급한다.
+	+ 참고 자료: https://blockdmask.tistory.com/331
+
++ isalpha
+	+ 프로토타입
+		~~~
+			int isalpha(int c);
+		~~~
+	+ 입력된 문자가 알파뱃인지 확인하는 함수
+	+ 대소문자 관계 없이 알파뱃이면true
+	+ 자료 출처: https://linux.die.net/man/3/isalpha
+
++ isdigit
+	+ 프로토타입
+		~~~
+			int isdigit(int c);
+		~~~
+	+ 숫자를 판단하는 함수	
+	+ 자료 출처: https://linux.die.net/man/3/isalpha
