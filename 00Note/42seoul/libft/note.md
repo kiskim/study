@@ -289,3 +289,65 @@
 		~~~
 	+ 숫자를 판단하는 함수	
 	+ 자료 출처: https://linux.die.net/man/3/isalpha
+
++ isalnum
+	+ 알파뱃이거나 숫자인지 확인
+	+ int isalnum(int c);
++ isascii
+	+ 7bit unsinged char 값으로 ascii 문자가 맞는지 확인
+	+ int isascii(int c);
++ isprint
+	+ 출력 가능한 문자열인지 확인
+	+ int isprint(int c);
++ toupper, tolower
+	+ 각각 대문자, 소문자로 변환하는 함수
+	+ 변환이 불가능한 경우 입력을 그대로 출력
+	+ int toupper(int c);
+	+ int tolower(int c);
+
++ calloc
+	+ void *calloc(size_t n, size_t size);
+	+ n: 할당 할 메모리의 단위 갯수
+	+ size: 하나당 크기
+	+ 할당된 메모리 공간을 모두 0으로 초기화한다
+	+ https://m.blog.naver.com/PostView.nhn?blogId=sharonichoya&logNo=220501158281&proxyReferer=https:%2F%2Fwww.google.com%2F
+
+
++ strdup
+	+ char *strdup(constr char *s);
+	+ 문자열 s를 복사하고 복사된 문자열을 가리키는 포인터를 반환하는 함수
+	+ 공간을 확보하기 위해 내부적으로 malloc을 호출
+	+ 사용 후 free를 사용해 메모리 해제가 필요
+	+ 할당이 정상적으로 성공했을 경우 포인터를 반환하고 에러시 NULL을 반환한다.
+	+ https://m.blog.naver.com/PostView.nhn?blogId=wideeyed&logNo=80012714484&proxyReferer=https:%2F%2Fwww.google.com%2F
+
++ 자료 출처: https://linux.die.net/man/
+
++ 추가 함수
++ ft_substr
+	+ char *ft_substr(char const *s, unsigned int start, size_t len);
+	+ s: 자를 문자열의 포인터
+	+ start: 자르기 시작할 인덱스
+	+ len: 자를 최고 길이
+	+ return: 성공 시 포인터, 실패 시 NULL
+	+ malloc을 사용해 메모리를 할당하고 s를 strart 인덱스부터 최대 len 길이만큼 자른 문자열의 포인터를 반환
+
++ ft_strjoin
+	+ char *ft_strjoin(char const *s1, char const *s2);
+	+ s1: prefix string
+	+ s2: suffix string
+	+ return: new string, NUll
+	+ s1과 s2를 연결한 문자열의 포인터를 반환
+
++ ft_strtrim
+	+ char *ft_strtrim(char const *s1, char const *set);
+	+ s1: 삭제 처리할 대상 문자열
+	+ set: 삭제할 문제 집합
+	+ return: 새로 할당되어 삭제 처리된 문자열
+
++ ft_split
+	+ char **ft_split(char const *s, char c);
+	+ s: 분할 할 문자열
+	+ c: 분할 기준
+	+ return: 분할된 문자열의 포인터 배열 / null
+	
