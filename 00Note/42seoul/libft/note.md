@@ -39,8 +39,8 @@
 	+ [, mode_t MODE]: O_CREAT 옵션 사용에 의한 파일이 생성될 때 지정되는 파일 접근 권한
 	+ 사용 후 close 를 통해 파일 연결 해제 필요
 	+ open 옵션
-	![open_opt1](https://github.com/kiskim/study/raw/master/00Note/img/pen_opt1.png)
-	![open_opt2](https://github.com/kiskim/study/raw/master/00Note/img/pen_opt2.png)
+	![open_opt1](https://github.com/kiskim/study/raw/master/00Note/img/open_opt1.png)
+	![open_opt2](https://github.com/kiskim/study/raw/master/00Note/img/open_opt2.png)
 	+ 출처: http://forum.falinux.com/zbxe/index.php?document_srl=408448&mid=C_LIB
 
 	3. read
