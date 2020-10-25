@@ -401,3 +401,10 @@
 	void ft_putnbr(int n, int fd);
 	~~~
 	+ 입력받은 숫자를 문자열로 치환 후 파일에 저장하는 함수
+
++ ft_lstadd_back
+	~~~
+	void ft_lstadd_bac(t_list **list, t_list *new);
+	~~~
+	+ 입력받은 구조체 t_list의 끝에 new를 이어 붙여주는 함수
+	+ new 가 null일 때 예외처리, list만 null일 때는 new가 list가 된다
