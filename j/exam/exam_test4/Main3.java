@@ -51,8 +51,10 @@ class Main3 {
 					else
 					{
 						StringBuilder temp = new StringBuilder(""+stc.str.charAt(0));
-						for (int i = 1; i < stc.str.length(); i++)
-							temp.append(stc.pre+""+stc.str.charAt(i));
+						for (int i = 1; i < stc.str.length(); i++){
+							temp.append(stc.pre);
+							temp.append(stc.str.charAt(i));
+						}
 						strStack.peek().str.append(temp);
 					}
 				}
