@@ -1,6 +1,4 @@
-package exam.exam7;
-
-import java.util.Arrays;
+package exam.exam_test7;
 
 public class Solution4 {
 	

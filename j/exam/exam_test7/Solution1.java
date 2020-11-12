@@ -1,4 +1,4 @@
-package exam.exam7;
+package exam.exam_test7;
 
 public class Solution1 {
     public int solution(String[] grades, int[] weights, int threshold) {

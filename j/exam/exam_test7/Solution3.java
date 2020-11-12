@@ -1,4 +1,4 @@
-package exam.exam7;
+package exam.exam_test7;
 
 public class Solution3 {
     public int solution(int money, String[] expected, String[] actual) {

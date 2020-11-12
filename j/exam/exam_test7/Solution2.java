@@ -1,5 +1,4 @@
-package exam.exam7;
-
+package exam.exam_test7;
 
 public class Solution2 {
 	public long[] solution(String s, String op) {

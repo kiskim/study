@@ -1,5 +1,4 @@
-package exam.exam7;
-
+package exam.exam_test7;
 
 public class Solution5 {
     public String solution(String penter, String pexit, String pescape, String data) {

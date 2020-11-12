@@ -1,4 +1,4 @@
-package exam.exam7;
+package exam.exam_test7;
 
 import java.util.ArrayList;
 import java.util.Collections;
