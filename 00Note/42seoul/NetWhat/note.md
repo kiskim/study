@@ -132,3 +132,12 @@ OSI 모델
 		+ 서비스를 구현하기 위한 프로토콜 모음
 		+ 응용 프로세스와 직접 관계해 응용 서비스 수행
 		+ DNS, DHCP, HTTP, HTTPS, FTP, SSH, Telnet
+DNS & DHCP
+---
++ 둘 모두 IP 주소를 이름과 연결해 주는 것과 관련된다.
++ DNS - Domain Name Server, 주소 명을 IP 주소로 전환
++ DHCP - Dynamic Host Configuration Protocol
+	+ IP 주소를 어떤 웹 사이트의 이름에 할당해줄지를 결정하는 프로토콜
+	+ 실제 IP 주소는 고정적이지 않고 동적으로 할당
+	+ 사용중이지 않거나 대여 기간이 끝난 IP 주소를 할당하는 방식
+	+ DNS가 IP 주소와 매치시키기 전에 할당을 해주는 과정과 관계
