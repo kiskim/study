@@ -79,10 +79,6 @@ public class _06 {
 					Collections.sort(c.complete);
 					while(c.complete.size() < c.num)
 					{
-						for(Applicant a : app)
-						{
-							
-						}
 						c.complete.remove(c.num);
 					}
 				}
