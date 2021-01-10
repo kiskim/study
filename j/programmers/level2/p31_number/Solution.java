@@ -1,6 +1,7 @@
 package programmers.level2.p31_number;
 
 class Solution {
+	// 숫자의 표현
     public int solution(int n) {
 		int answer = 0;
 		for(int i = 1; i <= n; i++){
