@@ -1,6 +1,7 @@
 package programmers.level1.p13_collatz;
 
 public class Main {
+	//콜라츠 추측
     public int solution(int num) {
 		long n = num;
 		int answer = 0;

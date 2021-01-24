@@ -1,6 +1,7 @@
 package programmers.level1.p08_alphabet;
 
 public class Main {
+	// level - 이상한 문자 만들기
 	public static String solution(String s){
 		char [] res = s.toLowerCase().toCharArray();
 		int flag = 0;

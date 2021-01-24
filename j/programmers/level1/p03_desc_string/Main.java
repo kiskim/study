@@ -1,7 +1,5 @@
 package programmers.level1.p03_desc_string;
 
-import java.util.Scanner;
-
 public class Main {
 	
 	public static String solution(String s)
@@ -22,12 +20,5 @@ public class Main {
 		}
 		s = String.valueOf(temp);
 		return s;
-	}
-	
-	public static void main(String[] args) {
-		Scanner scn = new Scanner(System.in);
-		String s = scn.nextLine();
-		System.out.println(solution(s));
-		scn.close();
 	}
 }

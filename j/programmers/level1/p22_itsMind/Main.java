@@ -1,42 +1,10 @@
 package programmers.level1.p22_itsMind;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.Comparator;
 
 public class Main {
-	class DataList implements Comparable<DataList>{
-		String s;
-		int n;
-		public DataList(String s, int n)
-		{
-			this.s = s;
-			this.n = n;
-		}
-
-		@Override
-		public int compareTo(DataList o) {
-			if(this.s.charAt(n) - o.s.charAt(n) != 0)
-				return this.s.charAt(n) - o.s.charAt(n);
-			else
-			{
-				return this.s.compareTo(o.s);
-			}
-		}
-	}
     public String[] solution(String[] strings, int n) {
-		String []  answer = null;
-		ArrayList<DataList> list  = new ArrayList<>();
-		for(String s : strings)
-			list.add(new DataList(s, n));
-		Collections.sort(list);
-		answer  = new String[list.size()];
-		for(int i = 0; i < list.size(); i++)
-			answer[i] = list.get(i).s;
-        return answer;
-	}
-    public String[] solution2(String[] strings, int n) {
 		Arrays.sort(strings, new Comparator<String>(){
 
 			@Override

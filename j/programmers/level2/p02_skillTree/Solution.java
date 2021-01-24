@@ -50,7 +50,7 @@ public class Solution {
 	public static void main(String[] args) {
 		String s = "CBD";
 		String[] tree = { "CQD","BACDE", "CBADF", "AECB", "BDA", "CQQQ"};
-		int a = new Solution().solution(s, tree);
+		int a = new Solution().solution2(s, tree);
 		System.out.println(a+"");
 	}
 }

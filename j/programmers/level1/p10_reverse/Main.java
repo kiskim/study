@@ -1,6 +1,7 @@
 package programmers.level1.p10_reverse;
 
 public class Main {
+	// level 1 - 자연수 뒤집어 배열로 만들기
     public static int [] solution(long n) {
 		int len = 0;
 		long temp = n;
