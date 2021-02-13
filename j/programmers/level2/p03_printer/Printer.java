@@ -1,6 +1,9 @@
 package programmers.level2.p03_printer;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Printer {
 	public class Print{
@@ -39,11 +42,38 @@ public class Printer {
 		}
         return answer;
 	}
+
+	public int solution2(int[] priorities, int location){
+		int answer = 0;
+		int l = location;
+		int size = priorities.length - 1;
+
+		Queue<Integer> que = new LinkedList<>();
+		for(int i : priorities)
+			que.add(i);
+		Arrays.sort(priorities);
+		while(!que.isEmpty()){
+			Integer i = que.poll();
+			if(i == priorities[size - answer]){
+				answer++;
+				l--;
+				if(l < 0)
+					break;
+			}
+			else{
+				que.add(i);
+				l--;
+				if(l < 0)
+					l = que.size() - 1;
+			}
+		}
+		return answer;
+	}
 	
 	public static void main(String[] args) {
-		int [] priority = {1, 1, 9, 1, 1, 1};
+		int [] priority = {2, 1, 3, 2};
 		Printer p = new Printer();
-		int a = p.solution(priority, 0);
+		int a = p.solution2(priority, 1);
 		System.out.println(a+"");
 	}
 	

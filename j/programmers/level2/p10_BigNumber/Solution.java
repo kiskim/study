@@ -76,10 +76,33 @@ public class Solution {
 		return sb.toString();
 	}
 
+	public String solution3(String number, int k){
+		StringBuilder sb = new StringBuilder();
+		char [] num = number.toCharArray();
+		char max = 0;
+		int maxIdx = 0;
+		int cnt = number.length() - k;
+		int start = 0;
+		while(cnt > 0){
+			cnt--;
+			for(int idx = start; idx + cnt < number.length(); idx++){
+				if (num[idx] > max){
+					max = num[idx];
+					maxIdx = idx;
+				}
+			}
+			sb.append(num[maxIdx]);
+			start = maxIdx + 1;
+			max = 0;
+		}
+		return sb.toString();
+	}
+
+
 	public static void main(String[] args) {
 		Solution s = new Solution();
-		System.out.println(s.solution2("1924", 2));
-		System.out.println(s.solution2("1231234", 3));
-		System.out.println(s.solution2("4177252841", 4));
+		System.out.println(s.solution3("1924", 2));
+		System.out.println(s.solution3("1231234", 3));
+		System.out.println(s.solution3("4177252841", 4));
 	}
 }

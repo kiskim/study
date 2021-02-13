@@ -5,7 +5,7 @@ package programmers.level2.p05_124;
  * 1 -> 1
  * 2 -> 2
  * 
- * 추가 조건 : 3으로 나눈 나머지가 0인 경우 몫에 -1 해준다 
+ * 추가 조건 : 3으로 나눈 나머지가 0인 경우 n에 -1 해준다 
  */
 class Solution {
 	public String solution(int n)
