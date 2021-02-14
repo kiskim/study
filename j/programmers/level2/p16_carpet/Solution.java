@@ -5,7 +5,7 @@ public class Solution {
 		int block = brown + yellow;
 		int x = 0;
 		int y = 0;
-		for(int i = 3; i <= block / 2; i++)
+		for(int i = 3; i <= block / i; i++)
 		{
 			y = i;
 			x = block / i;

@@ -50,7 +50,7 @@ public class Solution{
 			if (cnt < 0)
 				break;
 		}
-		return cnt >= 0;
+		return cnt == 0;
 	}
 
 	public static void main(String[] args) {
