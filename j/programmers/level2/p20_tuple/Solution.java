@@ -5,17 +5,15 @@ import java.util.*;
 public class Solution {
     public int[] solution(String s) {
 		String [] arr = s.replaceAll("[\\{\\}]", " ").trim().split(" , ");
-		ArrayList<String> l = new ArrayList<String>();
+		Set<String> l = new HashSet<String>();
 		Arrays.sort(arr, (a, b)->{return a.length() - b.length();});
 		int i = 0;
 		int[] answer = new int[arr.length];
 
 		for(String str : arr){
 			for(String n: str.split(",")){
-				if(!l.contains(n)){
-					l.add(n);
+				if(l.add(n))
 					answer[i++] = Integer.parseInt(n);
-				}
 			}
 		}
 		return answer;
