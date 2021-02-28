@@ -1,5 +1,3 @@
-package programmers.level2.p26_leasetComMul;
-
 import java.util.Arrays;
 
 class Solution {
