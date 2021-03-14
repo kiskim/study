@@ -20,6 +20,14 @@ class Solution {
 		}while(input_cnt != res_cnt);
         return answer;
 	}
+	public int solution2(int n){
+		int i = Integer.bitCount(n);
+
+		do
+			n++;
+        while(Integer.bitCount(n) != i);
+		return n;
+	}
 	
 	public static void main(String[] args) {
 		new Solution().solution(3);
