@@ -1,0 +1,139 @@
+1. Docker
+	+ container
+		+ 도커는 컨테이너 기반 오픈소스 가상화 플랫폼이다.
+		+ 기존 VM은 OS기반으로한 하드웨어 가상화지만 컨테이너는 하드웨어를 분리하지 않고 하나의 머신에서 동작하는 프로세스를 가상화하는 방식으로 OS 커널도 공유
+	+ IMAGE
+		+ 컨테이너 실행에 필요한 파일과 설정값을 포함한 것으로 변하지 않는다.
+		+ "컨테이너 == 이미지 실행한 상태"로 볼 수 있으며 추가, 변경되는 값은 컨테이너에 저장
+		+ 컨테이너의 상태가 변해도 이미지는 변하지 않는다.
+		+ 이미지는 컨테이너를 실행하기 위한 모든 정보를 가지기 때문에 의존성 파일 컴파일이나 설치가 불필요
+	+ Docker Hub
+		+ 도커는 이미지가 있어야 컨테이너를 생성하고 동작시킬 수 있는데, dockerfile은 필요한 패기지를 설치하고 동작하기 위한 설정을 담은 파일이고, 이 파일로 이미지를 생성(빌드)한다.
+		+ dockerfile은 도커 명령어를 순서에 따라 빌드하며, dockerfile을 빌드할 때 (이미지 파일로 변환 할 때) layer 구조를 보인다.
+		+ 이미지가 계층적으로 하나씩 쌓이면서 생성
+
+		Docker File 작성 예시
+		
+		~~~
+		FROM	debian:buster
+
+		LABEL	maintainer="daelee@student.42seoul.kr"
+
+		RUN	apt-get update && apt-get install -y \
+			nginx \
+			mariadb-server \
+			php-mysql \
+			php-mbstring \
+			openssl \
+			vim \
+			wget \
+			php7.3-fpm
+
+		COPY	./srcs/run.sh ./
+		COPY	./srcs/default ./tmp
+		COPY	./srcs/wp-config.php ./tmp
+		COPY	./srcs/config.inc.php ./tmp
+
+		EXPOSE	80 443
+
+		CMD 	bash run.sh
+		~~~
+
+		+ FROM
+			+ FROM 명령어로 시작해야함
+			+ 새 작업을 시작할 베이스 이미지를 지정
+			+ 과제에서는 **debian:buster**로 설정
+		+ LABEL
+			+ 이미지에 메타데이터 추가
+				+ 버전 정보, 작성자, 코멘트 등 상세 정보를 작성하기 위한 명령
+			+ 메타데이터 확인 명령어
+
+				~~~
+					docker image inspect --format="{{ .Config.Lables }}" [이미지명]
+				~~~
+			
+		+ Run
+			+ **새 이미지 레이어를 만들어 내** 명령을 실행하고 결과를 커밋
+			+ "\"를 사용해 다음 줄에 RUN 명령을 계속 할 수 있다.
+			+ **주의** : 항상 *apt_get*와 *apt-get install*은 같은 RUN 실행줄에서 동시해 실행해야 캐싱 문제를 방지할 수 있다. </br>
+			(RUN을 여러줄로 작성하면 image layer가 여러개 생성되고, 한줄로 작성하면 하나만 생성)
+		+ COPY
+			+ 호스트 OS의 파일 또는 디렉토리 컨테이너 안의 경로를 복사
+			+ ft_server 과제를 위해 수정해줬던 설정 파일들을 이 명령어로 미리 src폴더에 저장
+		+ EXPOSE
+			+ 해당 컨테이너가 런타임에 지정된 네트워크 포트에서 수신 대기중 이라는 것을 알려준다.
+			+ 일반적으로 dockerfile을 작성하는 사람과 컨테이너를 직접 실행할 사람 사이에서 공개할 포트를 알려주기 위해 문서 유형으로 작성할 때 사용
+			+ 작성된 포트를 실행해 listening 상태로 올려주지 않기 때문에 실제 포트를 열때는 container run -p 옵션을 사용해야 한다.</br>
+			
+				~~~
+				docker run -p 80:80/tcp -p 80:80/udp ...
+				~~~
+			+ 프로토콜 기본값 : TCP
+		+ CMD
+			+ 생성된 컨테이너를 실행할 명령어 지정
+			+ 도커 파일에 CMD가 두 개 이상인 경우 마지막만 유효
+2. 데비안 (Devian)
+	+ **데비안**은 우분투 같은 리눅스 OS 종류 중 하나로, 우분투처럼 APT 패키지 및 소프트웨어 관리자로 사용된다. 
+	+ 우분투가 데비안에서 나온 운영체제로 우분투의 핵심 유틸리티는 데비안에서 나옴
+	+ 안정성을 매우 중시한 리눅스 배포판이다.
+
+3. Nginx
+	+ 오픈소스 웹 서버 프로그램
+	+ 규모가 작은 서비스고 정적 데이터 처리가 많은 서비스에 적합
+	+ 웹 서버가 하는 일
+		+ 클라이언트로부터 요청이 발생했을 때 요청에 맞는 정적 콘텐츠를 보내는 역할
+		1. 커넥션
+		2. 요청 받는다
+		3. 요청 처리
+		4. 리소스 접근
+		5. 응답 생성
+		6. 응답 송신
+		7. 트랙잭션 로그 작성
+	+ 프록시 (Proxy)
+		+ Nginx는 일반적인 HTTP 웹 서버 역할 외에도 proxy, reverse proxy(대리 프록시)서버의 역할도 한다.
+		+ 웹 프록시 서버는 클라이언트와 서버 사이의 트랙잭션을 수행하하며 같은 프로토콜을 사용하는 둘 이상의 어플리케이션을 연결한다.
+		+ 보안성, 성능을 높여주고 비용 절약 가능하며 HTTP 트래픽을 감시하고 수정할 수 있다.
+			+ 어린이 필터
+			+ 문서 접근 제어자
+			+ 보안 방화벽
+			+ 웹 캐시
+		+ 대리 프록시
+			+ 웹 서버인 것 처럼 위장해 클라이언트의 요청을 받아 받은 컨텐츠의 위치를 찾아내기 위해 다른 서버와 커뮤니케이션을 한다.
+			+ 공용 컨텐츠에 대한 느린 웹 서버 성능을 개선하는데 사용될 수 있으며 이를 보통 서버 가속기라 부른다.
+4. phpMyAdmin 및 php-fpm
+	+ php를 기반으로 생성된 MySql의 GUI로 웹에서 실행 할 수 있는 프로그램
+	+ php: 대표적인 서버 사이드 스크립트 언어
+	+ CGI: 정적 컨텐츠만 다룰 수 있는 Nginx에서 동적 페이지 구현을 위해 웹서버 대신 동적 컨텐츠를 읽은 뒤 html로 변환시켜 웹 서버에게 다시 전달해주는 외부 프로그램 모듈이 필요한데, 이 ***연결 과정의 방법 혹은 규약을 정의한 것이 CGI***이다.
+	+ php-fpm(PHP FastCGI Process Manager)
+		+ 일반 CGI보다 빠른 처리가 가능한 FastCGI
+		+ Nginx와 php를 연동해 동적 컨텐츠도 다룰 수 있도록 만드는 것
+	
+5. HTTPS 및 SSL
+	+ SSL 위에서 돌아가는 HTTP의 평문 전송 대신에 **암호화된 통신을 하는 프로토콜**
+	+ 구현을 위해서는 *신뢰할 수 있는 상위 기업*이 발급한 인증서가 필요
+	+ 발급 기관을 **CA(Certificate Authority)**라고 한다.
+	+ self-signed SSL 인증서는 **자체적으로 발급 받는 인증서이며, 로그인 및 기타 개인 계정 인증 정보를 암호화**하며, 브라우저는 신뢰할 수 없다고 판단해 보안 경고가 발생한다.
+	+ self-signed SSL 인증서 발급은 몇가지 있는데 주로 무료 오픈소스인 *penssl*을 이용한다
+		+ HTTPS를 위해 필요한 개인키(.key), 서면요청파일(.csr), 인증서 파일(.crt)을 openssl이 발급한다.
+	
+6. Autoindex
+	+ autoindex을 알기 위해선 웹서버가 **리소스 매핑과 접근**을 하는 방법을 알아야한다.
+		> **웹 서버가 수 많은 리소스 중 요청에 알맞은 컨텐츠를 제공를 제공하는 방법**
+		> + 일반적으로 웹 서버는 컨텐츠를 특별한 한 폴더에서 사용하며 *문서 루트* 혹은 *docroot*라 부른다.
+		> + 리소스 매핑의 가장 단순한 형태는 요청 URI를 *dotroot*안에 있는 파일의 이름으로 사용하는 것이다.
+		> + 파일이 아닌 디렉토리를 가리키는 url 요청의 경우 요청한 url에 대응되는 디렉토리 안의 index.html 혹은 index.htm으로 이름붙은 파일을 찾아 컨텐츠로 반환한다. 이를 ***autoindex***라 한다.
+	+ 때문에 **autoindex** 기능을 켜 줘야한다. Nginx default파일에서 location / 부분에 *"autoindex on"*을 추가한다.
+		~~~
+		# etc/nginx/sites-available/default
+		# Autoindex
+			index index.html index.htm index.php #index.ngiinx-debian.html;
+
+			server_name ft_server;
+			location / {
+			# autoindex on 추가
+				autoindex on;
+				try_files $uri $uri/ =404;
+			}
+		~~~
+	+ autoindex가 꺼져있거나 index에 해당하는 파일이 없다면 웹서버는 자동으로 그 디렉토리 파일들을 크기, 변경일, 해당 파일에 대한 링크와 함께 열거한 HTML파일을 반환한다.
+	+ 루트 디렉토리인 /var/www/html에 존재하는 index.ngiinx-debian.html을 주석처리해보면, 읽을 파일이 없다고 생각해 전체 파일 목록을 반환한다.
