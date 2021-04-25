@@ -20,7 +20,6 @@
 
 상세 학습 내용
 ---
-+ 학습 내용 정리 git : [깃 허브](https://github.com/kiskim/study)   
 
 
 학습 내용에 대한 개인적인 총평
